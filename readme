@@ -1,0 +1,60 @@
+Amazon Product Availability Checker
+Overview
+This script tracks the availability of a specific Amazon product and sends email notifications when the product is in stock.
+
+Prerequisites
+Python 3.x
+Libraries: lxml, requests, schedule, smtplib
+Install required libraries:
+
+pip install lxml requests schedule
+
+Configuration
+Set Email and Gmail Credentials:
+
+receiver_email_id = "USER_EMAIL"
+GMAIL_USERNAME = "YOUR_GMAIL_ID"
+GMAIL_PASSWORD = "YOUR_GMAIL_PASSWORD"
+
+Set Product ASIN and URL
+
+Asin = 'B077PWK5BT'
+url = "https://www.amazon.in/dp/" + Asin
+
+Usage
+Run the script:python amazon_availability_checker.py
+
+
+
+Script Functions
+
+check(url):
+Sends GET request to the product URL.
+Parses HTML to check availability.
+Returns availability status.
+
+sendemail(ans, product):
+Sends an email with the availability status.
+
+ReadAsin():
+Constructs URL and checks product availability.
+Sends email if the product is available.
+
+job():
+Calls ReadAsin() to track the product.
+
+Scheduler:
+Runs job() every minute.
+
+Notes
+Modify the arr list in ReadAsin to match possible stock messages.
+Ensure less secure app access is enabled for your Gmail account.
+
+
+Troubleshooting
+Check Gmail credentials and SMTP settings if emails are not sent.
+Verify the XPath expression if availability detection fails.
+
+
+This guide helps you set up the Amazon product availability checker for timely stock notifications.
+
